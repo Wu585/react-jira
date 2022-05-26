@@ -8,8 +8,9 @@
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
+    "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.0",
+    "qs": "^6.10.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
@@ -22,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "mock": "json-server __json_server_mock__/db.json --watch"
+    "mock": "json-server __json_server_mock__/db.json --watch --port 8080"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@types/qs": "^6.9.7",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "json-server": "^0.17.0",
