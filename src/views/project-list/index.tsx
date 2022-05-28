@@ -25,7 +25,6 @@ const ProjectListScreen = () => {
     });
   }, [debouncedParam]);
   useMount(() => {
-    console.log("one");
     fetch(`${apiUrl}/users`).then(async (res) => {
       if (res.ok) {
         setUsers(await res.json());
