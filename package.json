@@ -10,6 +10,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.0",
+    "jira-dev-tool": "^1.7.61",
     "qs": "^6.10.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -59,5 +60,8 @@
       "eslint",
       "prettier --write"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
