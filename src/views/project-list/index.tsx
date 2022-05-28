@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SearchPanel } from "./search-panel";
-import { List } from "./list";
+import { List, Project } from "./list";
 import qs from "qs";
 import { cleanObject } from "../../utils";
 import { useDebounce, useMount } from "../../hooks";
@@ -8,14 +8,13 @@ import { useDebounce, useMount } from "../../hooks";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProjectListScreen = () => {
-  console.log("here");
   const [param, setParam] = useState({
     name: "",
     personId: "",
   });
   const debouncedParam = useDebounce(param);
   const [users, setUsers] = useState([]);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<Project[]>([]);
   useEffect(() => {
     fetch(
       `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
