@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../context/auth-context";
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
+import { LongButton } from "./index";
 
 function Register() {
   const { register } = useAuth();
@@ -12,23 +13,21 @@ function Register() {
   return (
     <Form onFinish={handleSubmit}>
       <Form.Item
-        label="用户名"
         name="username"
         rules={[{ required: true, message: "请输入用户名" }]}
       >
-        <Input />
+        <Input placeholder={"用户名"} type="text" id={"username"} />
       </Form.Item>
       <Form.Item
-        label="密码"
         name="password"
         rules={[{ required: true, message: "请输入密码" }]}
       >
-        <Input.Password />
+        <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
-        <Button htmlType="submit" type="primary">
+        <LongButton htmlType="submit" type="primary">
           注册
-        </Button>
+        </LongButton>
       </Form.Item>
     </Form>
   );
