@@ -2,10 +2,11 @@ import React from "react";
 import { useAuth } from "../context/auth-context";
 import { Form, Input } from "antd";
 import { LongButton } from "./index";
+import { useAsync } from "../hooks/use-async";
 
-function Login() {
+function Login({ onError }: { onError: (error: Error) => void }) {
   const { login } = useAuth();
-
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
   /*const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     const username = (event.currentTarget.elements[0] as HTMLInputElement)
@@ -15,8 +16,15 @@ function Login() {
     login({ username, password });
   };*/
 
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await run(login(values));
+    } catch (e) {
+      onError(e as Error);
+    }
   };
 
   return (
@@ -34,7 +42,7 @@ function Login() {
         <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
-        <LongButton htmlType="submit" type="primary">
+        <LongButton loading={isLoading} htmlType="submit" type="primary">
           登录
         </LongButton>
       </Form.Item>
